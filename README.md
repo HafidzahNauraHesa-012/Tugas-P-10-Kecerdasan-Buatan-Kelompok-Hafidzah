@@ -93,10 +93,26 @@ Contoh augmentasi yang dicoba:
 
 ## Cara menjalankan ulang
 
-```bash
+Di Windows, pasang `uv` jika belum ada:
+
+```powershell
+winget install --id=astral-sh.uv -e
+```
+
+Buka ulang terminal, lalu jalankan dari folder repo:
+
+```powershell
 uv sync
+uv run python -m ipykernel install --user --name tugas-p10-segmentasi-polip --display-name "Python (uv: segmentasi polip)"
+```
+
+Di VS Code, buka `segmentasi_polip.ipynb`, klik **Select Kernel** di kanan atas, lalu pilih **Python (uv: segmentasi polip)**. Jika memakai JupyterLab, jalankan:
+
+```powershell
 uv run jupyter lab segmentasi_polip.ipynb
 ```
+
+Pilih kernel **Python (uv: segmentasi polip)** di notebook jika diminta. Kernel tersebut memakai environment `.venv` yang dibuat oleh `uv sync`.
 
 Atau buka notebook di Google Colab (Runtime → Change runtime type → T4 GPU).
 
