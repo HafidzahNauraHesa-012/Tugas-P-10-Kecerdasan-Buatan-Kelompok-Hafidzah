@@ -19,7 +19,7 @@
 |---|---|---|---|
 | Hafidzah Naura Hesa | 123430012 | ✍️ | ✍️ misal: menjalankan eksperimen, menulis Bagian 3 |
 | Hafiza Diva Pratiwi | 123430026 | ✍️ | ✍️ |
-| Okta Yuriko S. | ✍️ | ✍️ | ✍️ |
+| Okta Yuriko S. | 123430042 | ✍️ | ✍️ |
 
 ## 1. Pertanyaan
 
