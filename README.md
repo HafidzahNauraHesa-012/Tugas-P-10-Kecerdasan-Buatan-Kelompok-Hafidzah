@@ -18,7 +18,7 @@
 | Nama | NIM | Username GitHub | Kontribusi utama |
 |---|---|---|---|
 | Hafidzah Naura Hesa | 123430012 | ✍️ | ✍️ misal: menjalankan eksperimen, menulis Bagian 3 |
-| Hafiza Diva Pratiwi | 123430026 | ✍️ | ✍️ |
+| Hafiza Diva Pratiwi | 123430026 | hafizadiva276-png | ✍️ |
 | Okta Yuriko S. | 123430042 | ✍️ | ✍️ |
 
 ## 1. Pertanyaan
