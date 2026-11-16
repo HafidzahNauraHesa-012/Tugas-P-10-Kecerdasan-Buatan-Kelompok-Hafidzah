@@ -46,8 +46,8 @@ Dalam percobaan ini augmentasi geometri dan cahaya paling membantu U-Net dengan 
 |---|---|---|---|
 | Tanpa augmentasi | — | Pembanding | — |
 | Flip dan rotasi  | Flip horizontal, flip vertikal, dan rotasi| Menguji perubahan arah dan posisi citra untuk membantu model mengenali polip dari berbagai arah| Naik |
-| Geometri dan cahaya | Flip, pergeseran, perubahan skala, kecerahan, dan kontras| Menguji pengaruh perubahan posisi, ukuran dan pencahayaan | Naik|
-| Cahaya dan blur | Perubahan kecerahan, kontras, dan Gaussian blur | Menguji variasi pencahayaan dan ketajaman citra dalam membantu model | Sama|
+| Geometri dan cahaya | Flip, pergeseran, perubahan skala, kecerahan, dan kontras| Menguji pengaruh perubahan posisi, ukuran dan pencahayaan | Naik |
+| Cahaya dan blur | Perubahan kecerahan, kontras, dan Gaussian blur | Menguji variasi pencahayaan dan ketajaman citra dalam membantu model | Sama |
 
 Contoh augmentasi yang dicoba:
 
