@@ -18,7 +18,7 @@
 | Nama | NIM | Username GitHub | Kontribusi utama |
 |---|---|---|---|
 | Hafidzah Naura Hesa | 123430012 | HafidzahNauraHesa-012 | Mengimplementasikan rancangan eksperimen kedalam skenario dan menjalankan eksperimen tersebut |
-| Hafiza Diva Pratiwi | 123430026 | hafizadiva276-png | ✍️ |
+| Hafiza Diva Pratiwi | 123430026 | hafizadiva276-png |Mempelajari jenis augmentasi dan membahas hasil percobaan|
 | Okta Yuriko S. | 123430042 | Okta Yuriko A. L Br Simanullang | Memeriksa hasil dan membantu menyusun laporan |
 
 ## 1. Pertanyaan
@@ -71,32 +71,31 @@ Contoh augmentasi yang dicoba:
 
 ![Peta kesalahan](hasil/peta_kesalahan.png)
 
-<!-- Hijau = benar, merah = false positive, biru = false negative.
-     Pertanyaan pemandu: Polip seperti apa yang sering terlewat (kecil? datar? warna mirip dinding usus?)
-     Apa yang sering dikira polip padahal bukan? Apakah augmentasi memperbaiki kasus sulit? -->
-
-✍️
+Peta kesalahan digunakan untuk melihat seberapa baik model mendeteksi polip dengan membandingkan hasil prediksi model dan mask acuan pada 4 citra uji. citra yang digunakan terdiri dari 2 citra yang paling sulit dikenali dan 2 citra yang paling mudah dikenali oleh model tanpa augmentasi. Pada peta kesalahan, warna hijau menunjukkan bagian polip yang berhasil dideteksi dengan benar, warna merah menunjukkan area yang diprediksi sebagai polip padahal bukan polip (false positive), sedangkan warna biru menunjukkan bagian polip yang tidak berhasil dideteksi oleh model (false negative). 
+Dari hasil perbandingan, terlihat bahwa kemampuan model dalam mendeteksi polip berbeda-beda pada setiap skenario augmentasi. Pada citra yang sulit dikenali, beberapa skenario masih menghasilkan prediksi yang kurang tepat, seperti melewatkan sebagian area polip atau mendeteksi area di luar polip. sementara itu, pada citra yang  lebih mudah dikenali, hasil prediksi beberapa skenario terlihat lebih mendekati mask acuan. Hal ini menunjukkan bahwa penggunaan augmentasi dapat memberikan hasil yang berbeda, bergantung pada kondisi dan karakteristik citra yang diuji.
 
 ## 6. Pembahasan & kesimpulan
 
-<!-- Bandingkan hasil dengan hipotesis di Bagian 3. Hipotesis yang ternyata salah tetap bernilai,
-     asalkan dijelaskan kenapa. Perbedaan kecil (lebih kecil dari simpangan baku) belum tentu berarti. -->
-
-✍️
+Berdasarkan hasil tiga kali pengulangan percobaan, skenario augmentasi geometri dan cahaya memperoleh hasil terbaik dengan rata-rata Dice sebesar 0,596 dan IoU sebesar 0,476. Skenario ini juga memiliki simpangan baku Dice paling kecil, yaitu 0,008 sehingga hasilnya lebih konsisten dibandingkan skenario lainnya. 
+Sementara itu, skenario flip dan rotasi memperoleh rata-rata Dice sebesar 0,589, sednagkan skenario cahaya dan blur memperoleh Dice sebesar 0,586. kedua skenario tersebut juga memberikan hasil yang lebih baik dibandingkan model tanpa augmentasi yang memperoleh Dice sebesar 0,552.
+Meskipun demikian, hasil pada peta kesalahan menunjukkan bahwa setiap skenario memiliki kemampuan yang berbeda dalam mendeteksi polip pada masing-masing citra. Perbedaan ini terutama terlihat pada citra yang lebih sulit dikenali. Dengan demikian, augmentasi tidak selalu memberikan hasil yang sama pada setiap citra, tetapi dapat membantu meningkatkan kemampuan model secara keseluruhan. 
+Kesimpulan: 
+1. Skenario augmentasi geometri dan cahaya memberikan hasil terbaik dengan rata-rata Dice sebesar 0,596 dan IoU sebesar 0,476.
+2. Skenario flip dan rotasi memperoleh rata-rata Dice sebesar 0,589 sedangkan skenario cahaya dan blur memperoleh Dice sebesar 0,586.
+3. Ketiga skenario augmentasi menghasilkan nilai Dice yang lebih tinggi dibandingkan model tanpa augmentasi, yaitu sebesar 0,552.
+4. Berdasarkan hasil percobaan, augmentasi geometri dan cahaya menjadi skenario yang paling baik karena menghasilkan rata-rata Dice dan IoU tertinggi serta simpangan baku Dice paling kecil. 
 
 ## 7. Pembagian kerja
 
-<!-- Siapa mengerjakan apa. Penilaian proses kerja dilihat dari riwayat commit tiap anggota. -->
-
-✍️
+| Nama Anggota | Tugas |
+|---|---|
+| Hafidzah Naura Hesa | Menyiapkan skenario augmentasi dan menjalankan percobaan. |
+| Hafiza Diva Pratiwi | Mempelajari jenis augmentasi dan membahas hasil percobaan. |
+| Okta Yuriko S. | Memeriksa hasil percobaan dan membantu menyusun laporan. |
 
 ## 8. Penggunaan AI
 
-<!-- Wajib diisi, walau tidak memakai AI (tulis "Tidak memakai AI").
-     Contoh: "Claude Code (CLI) untuk menulis skenario augmentasi dan memperbaiki error di Bagian 4.
-     Draf Bagian 6 ditulis sendiri, lalu dirapikan bahasanya dengan bantuan AI." -->
-
-✍️
+Dalam pengerjaan tugas ini, GitHub Copilot yang tersedia di Visual Studio Code digunakan untuk membantu penulisan kode pada notebook dan mencari penyebab kesalahan (error) saat program dijalankan. Saran yang diberikan oleh Copilot diperiksa dan disesuaikan terlebih dahulu sebelum digunakan. Sementara itu, ChatGPT digunakan untuk membantu merapikan bahasa pada bagian 5,6,7, dan 8 di pembahasan. Isi dan pembahasan pada bagian tersebut disusun sendiri oleh anggota kelompok, kemudian diperbaiki dari segi bahasa agar lebih jelas dan mudah dipahami. 
 
 ## Cara menjalankan ulang
 
@@ -127,4 +126,4 @@ Atau buka notebook di Google Colab (Runtime → Change runtime type → T4 GPU).
 
 - Jha, D., dkk. (2020). Kvasir-SEG: A Segmented Polyp Dataset. *MultiMedia Modeling (MMM 2020)*, 451–462.
 - Ronneberger, O., Fischer, P., & Brox, T. (2015). U-Net: Convolutional Networks for Biomedical Image Segmentation. *MICCAI*. arXiv:1505.04597.
-- ✍️ tambahkan referensi lain yang kalian pakai
+
