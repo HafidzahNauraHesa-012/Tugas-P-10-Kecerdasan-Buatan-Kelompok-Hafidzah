@@ -19,20 +19,21 @@
 |---|---|---|---|
 | Hafidzah Naura Hesa | 123430012 | HafidzahNauraHesa-012 | Mengimplementasikan rancangan eksperimen kedalam skenario dan menjalankan eksperimen tersebut |
 | Hafiza Diva Pratiwi | 123430026 | hafizadiva276-png | ✍️ |
-| Okta Yuriko S. | 123430042 | ✍️ | ✍️ |
+| Okta Yuriko S. | 123430042 | Okta Yuriko A. L Br Simanullang | ✍️ |
 
 ## 1. Pertanyaan
 
 Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan augmentasi apa yang tidak? Kenapa?
+Dalam percobaan ini augmentasi geometri dan cahaya paling membantu U-Net dengan nilai Dice nya 0,596 karena adanya variasi posisi, ukuran, kecerahan dan kontras yang membuat model jadi terbiasa mengenali polip pada kondisi yang berbeda. Flip dan rotasi juga membantu dengan Dice nya 0,589. Tapi untuk cahaya dan blur memberikan peningkatan paling kecil dengan Dice nya 0,586. Jadi tidak ada augmentasi yang menghasilkan nilai lebih rendah daripada model tanpa augmentasi , tapi penambahan blur membuat batas polip lebih sulit dikenali
 
 ## 2. Data & pengaturan
 
 <!-- Isi dari Bagian 2 notebook. Pastikan CEPAT = False untuk hasil akhir. -->
 
-- Dataset: Kvasir-SEG (1000 citra kolonoskopi + mask polip), diperkecil ke 128 × 128 piksel.
-- Data uji: 200 citra (tetap). Data latih: ✍️ citra per ulangan.
-- Model: U-Net mini (±0,5 juta parameter), ✍️ epoch, ✍️ ulangan per skenario.
-- Dijalankan di: ✍️ (misal: Google Colab T4 / laptop CPU / Mac M1).
+- Dataset: Kvasir-SEG yang terdiri dari 1000 citra kolonoskopi dan mask polip, dengan ukuran 128 × 128 piksel.
+- Data uji: 200 citra  yang digunakan sama pada setiap skenario. Data latih: 800 citra dan dari kumpulan ini dipilih 200 citra untuk setiap ulangan.
+- Model: U-Net mini. Pelatihan 40 epoch per skenario dengan 3 kali ulangan untuk setiap skenario
+- Dijalankan di: GPU NVIDIA dengan CUDA, PhyTorch dan Jupyter Notebook.
 
 ![Contoh data](hasil/contoh_data.png)
 
@@ -44,8 +45,9 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 | Skenario | Augmentasi (kode) | Alasan klinis | Hipotesis: Dice naik/turun/sama? |
 |---|---|---|---|
 | Tanpa augmentasi | — | Pembanding | — |
-| ✍️ | ✍️ `v2....` | ✍️ | ✍️ |
-| ✍️ | ✍️ `v2....` | ✍️ | ✍️ |
+| Flip dan rotasi  | Flip horizontal, flip vertikal, dan rotasi| Menguji perubahan arah dan posisi citra untuk membantu model mengenali polip dari berbagai arah| Naik |
+| Geometri dan cahaya | Flip, pergeseran, perubahan skala, kecerahan, dan kontras| Menguji pengaruh perubahan posisi, ukuran dan pencahayaan | Naik|
+| Cahaya dan blur | Perubahan kecerahan, kontras, dan Gaussian blur | Menguji variasi pencahayaan dan ketajaman citra dalam membantu model | Sama |
 
 Contoh augmentasi yang dicoba:
 
@@ -56,7 +58,12 @@ Contoh augmentasi yang dicoba:
 
 <!-- Tempel isi hasil/ringkasan.md di sini. -->
 
-✍️ tempel tabel dari `hasil/ringkasan.md`
+| Skenario | Dice (rata-rata ± sb) | IoU (rata-rata ± sb) | Dice tiap ulangan |
+|---|---|---|---|
+| Tanpa augmentasi | 0.552 ± 0.033 | 0.437 ± 0.029 | 0.508, 0.586, 0.562 |
+| Flip dan rotasi | 0.589 ± 0.052 | 0.474 ± 0.045 | 0.593, 0.651, 0.524 |
+| Geometri dan cahaya | 0.596 ± 0.008 | 0.476 ± 0.011 | 0.603, 0.584, 0.601 |
+| Cahaya dan blur | 0.586 ± 0.022 | 0.464 ± 0.027 | 0.576, 0.565, 0.616 |
 
 ![Perbandingan Dice](hasil/perbandingan.png)
 
